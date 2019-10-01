@@ -12,19 +12,25 @@ function draw() {
   background("black");
 
   //to create repetitions of ellipses
-  for (a = 0; a <= 30; a++) {
-    for (b = 0; b <= 30; b++) {
+  for (a = 0; a <= width / 30; a++) { //columns
+    for (b = 0; b <= height / 30; b++) { //rows
+
       //distance between ellipses
-      var x = a * width / 30;
-      y = b * height / 30;
+      var x = a * width / 30; //columns
+      var y = b * height / 30; //rows
 
       //to create an animated diagonal
-      angle = 20 * a + 20 * b + frameCount * 50;
-      lerp = Math.abs(cos(angle));
+      diagonal = 20 * a + 20 * b + frameCount * 50;
+      //vertical = 20 * x + 20 * y + frameCount * 50; (vertical movement)
+
+
+      //"how" the color change
+      animation = (cos(diagonal));
 
       //create two different blended colors
-      colors = lerpColor(color("gold"), color("slateblue"), lerp);
-      colors1 = lerpColor(color("greenyellow"), color("deeppink"), lerp);
+      //first 2 variables are the colors, the last one indicate how they blend
+      colors = lerpColor(color("gold"), color("slateblue"), animation);
+      colors1 = lerpColor(color("greenyellow"), color("deeppink"), animation);
 
       //to create a size variation due to the mouse position
       var d = map(mouseX, 0, width, 0, 20);
