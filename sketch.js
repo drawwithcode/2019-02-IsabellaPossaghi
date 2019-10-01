@@ -3,7 +3,7 @@ function setup() {
   angleMode(DEGREES);
   noStroke();
   //animation speed
-  frameRate(10);
+  frameRate(20);
 
 
 }
@@ -12,20 +12,19 @@ function draw() {
   background("black");
 
   //to create repetitions of ellipses
-  for (a = 0; a <= width / 30; a++) { //columns
-    for (b = 0; b <= height / 30; b++) { //rows
+  for (var a = 0; a <= 100; a++) { //columns
+    for (var b = 0; b <= 100; b++) { //rows
 
       //distance between ellipses
-      var x = a * width / 30; //columns
-      var y = b * height / 30; //rows
+      var x = a * windowWidth / 30; //columns
+      var y = b * windowHeight / 30; //rows
 
-      //to create an animated diagonal
-      diagonal = 20 * a + 20 * b + frameCount * 50;
-      //vertical = 20 * x + 20 * y + frameCount * 50; (vertical movement)
+      //to create a "falling" movement
+      falling = 50 * x + 50 * y + frameCount * 100;
 
 
       //"how" the color change
-      animation = (cos(diagonal));
+      animation = (sin(falling));
 
       //create two different blended colors
       //first 2 variables are the colors, the last one indicate how they blend
