@@ -19,17 +19,17 @@ function draw() {
       var x = a * windowWidth / 30; //columns
       var y = b * windowHeight / 30; //rows
 
-      //to create a "falling" movement
-      falling = 50 * x + 50 * y + frameCount * 100;
+      //to create a movement
+      fallingdots = x * 100 + y * 100 * frameCount ;
 
 
       //"how" the color change
-      animation = (sin(falling));
+      animation = (sin(fallingdots));
 
       //create two different blended colors
       //first 2 variables are the colors, the last one indicate how they blend
-      colors = lerpColor(color("gold"), color("slateblue"), animation);
-      colors1 = lerpColor(color("greenyellow"), color("deeppink"), animation);
+      shade = lerpColor(color("gold"), color("slateblue"), animation);
+      shade2 = lerpColor(color("greenyellow"), color("deeppink"), animation);
 
       //to create a size variation due to the mouse position
       var d = map(mouseX, 0, width, 0, 20);
@@ -42,10 +42,10 @@ function draw() {
 
       //to create a change of colors due to the mouse click
       if (mouseIsPressed) {
-        fill(colors);
+        fill(shade);
 
       } else {
-        fill(colors1);
+        fill(shade2);
       }
 
 
