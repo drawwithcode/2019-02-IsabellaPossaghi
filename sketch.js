@@ -1,8 +1,9 @@
 function setup() {
-  createCanvas(windowWidth, windowHeight)
+  createCanvas(windowWidth, windowHeight);
   angleMode(DEGREES);
   noStroke();
-  frameRate(10)
+  //animation speed
+  frameRate(10);
 
 
 }
@@ -10,28 +11,31 @@ function setup() {
 function draw() {
   background("black");
 
+  //to create repetitions of ellipses
   for (a = 0; a <= 30; a++) {
     for (b = 0; b <= 30; b++) {
-      let x = a * width / 30,
-        y = b * height / 30,
+      //distance between ellipses
+      var x = a * width / 30;
+      y = b * height / 30;
 
-        angle = 20 * a + 20 * b + frameCount * 50,
-        r = 20,
+      //to create an animated diagonal
+      angle = 20 * a + 20 * b + frameCount * 50;
+      lerp = Math.abs(cos(angle));
 
-
-        lerp = Math.abs(cos(angle)),
-        colors = lerpColor(color("gold"), color("slateblue"), lerp);
+      //create two different blended colors
+      colors = lerpColor(color("gold"), color("slateblue"), lerp);
       colors1 = lerpColor(color("greenyellow"), color("deeppink"), lerp);
 
-      let d = map(mouseX, 0, width, 0, 20);
+      //to create a size variation due to the mouse position
+      var d = map(mouseX, 0, width, 0, 20);
 
-
+      //ellipse coordinates and diameter
       ellipse(x, y, d);
 
 
 
 
-
+      //to create a change of colors due to the mouse click
       if (mouseIsPressed) {
         fill(colors);
 
@@ -39,7 +43,9 @@ function draw() {
         fill(colors1);
       }
 
-      text('Move the cursor and click!', 50, 50);
+
+      //written instructions
+      text('Drag the cursor and click!', 50, 50);
       textSize(20);
 
 
